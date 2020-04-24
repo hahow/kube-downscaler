@@ -12,11 +12,12 @@ jobs:
 
       - name: Install Helm
         run: |
-          curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
           helm plugin install https://github.com/hayorov/helm-gcs
 
       - name: Lint chart
         run: |
+          helm dep build
           helm lint .
 
   release:
