@@ -1,0 +1,6 @@
+dependencies:
+- name: common
+  repository: https://hahow-helm-charts.storage.googleapis.com/
+  version: 0.3.0
+digest: sha256:a808e8bf58ad4425e0f746a1f02de946e0a274c9a96324767979dc403e9c3b8e
+generated: "2020-04-24T10:24:34.033207+08:00"
