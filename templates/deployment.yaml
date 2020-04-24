@@ -1,11 +1,13 @@
 {{- include "common.deployment" (list . .Values (dict) .Values.serviceAccount "kube-downscaler.deployment") -}}
 
 {{- define "kube-downscaler.deployment" -}}
+{{- $top := first . -}}
+{{- $deployment := index . 1 -}}
 spec:
   template:
     spec:
       containers:
-      - {{- include "common.container" (append . "kube-downscaler.deployment.container") | nindent 8 }}
+      - {{- include "common.container" (list $top $deployment "kube-downscaler.deployment.container") | nindent 8 }}
 {{- end -}}
 
 {{- define "kube-downscaler.deployment.container" -}}

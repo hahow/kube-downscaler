@@ -8,6 +8,6 @@ roleRef:
   name: {{ include "common.fullname" . }}
 subjects:
 - kind: ServiceAccount
-  name: {{ include "common.fullname" . }}
+  name: {{ include "common.serviceAccountName" (list . .Values.serviceAccount) }}
   namespace: {{ .Release.Namespace }}
 {{- end -}}
