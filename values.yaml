@@ -15,18 +15,15 @@ serviceAccount:
 
 podSecurityContext: {}
 
-securityContext:
-  readOnlyRootFilesystem: true
-  runAsNonRoot: true
-  runAsUser: 1000
+securityContext: {}
 
-resources:
-  requests:
-    cpu: 10m
-    memory: 100Mi
-  limits:
-    cpu: 10m
-    memory: 100Mi
+resources: {}
+# requests:
+#   cpu: 10m
+#   memory: 100Mi
+# limits:
+#   cpu: 10m
+#   memory: 100Mi
 
 nodeSelector: {}
 
