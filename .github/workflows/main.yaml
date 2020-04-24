@@ -45,8 +45,9 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/gcloud_auth_key.json
         run: |
-          helm repo add hahow gs://hahow-helm-charts
+          helm repo add hahow-gcs gs://hahow-helm-charts
+          helm repo add hahow https://hahow-helm-charts.storage.googleapis.com/
           helm dep build
 
           PACKAGE_FILE_PATH=$(helm package . | sed 's/^Successfully packaged chart and saved it to: //')
-          helm gcs push $(basename ${PACKAGE_FILE_PATH}) hahow --public
+          helm gcs push $(basename ${PACKAGE_FILE_PATH}) hahow-gcs --public
