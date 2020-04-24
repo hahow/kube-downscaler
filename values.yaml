@@ -59,8 +59,7 @@ namespace:
   inactiveIn:
   # - kube-system
 
-## Downscale resources of this kind as comma separated list. [deployments,
-## statefulsets, stacks, horizontalpodautoscalers] (default: deployments)
+## Downscale resources of this kind. (default: deployments)
 includeResources:
 # - deployments
 # - statefulsets
