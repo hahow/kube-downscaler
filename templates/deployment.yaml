@@ -1,0 +1,61 @@
+{{- include "common.deployment" (list . .Values (dict) .Values.serviceAccount "kube-downscaler.deployment") -}}
+
+{{- define "kube-downscaler.deployment" -}}
+{{- $top := first . -}}
+{{- $deployment := index . 1 -}}
+spec:
+  template:
+    spec:
+      containers:
+      - {{- include "common.container" (list $top $deployment "kube-downscaler.deployment.container") | nindent 8 }}
+{{- end -}}
+
+{{- define "kube-downscaler.deployment.container" -}}
+{{- $deployment := index . 1 -}}
+args:
+{{- if $deployment.dryRun }}
+- --dry-run
+{{- end }}
+{{- if $deployment.debug }}
+- --debug
+{{- end }}
+{{- if $deployment.once }}
+- --once
+{{- end }}
+- --interval={{ $deployment.interval }}
+{{- if $deployment.namespace }}
+{{- with $deployment.namespace.activeIn }}
+- --namespace={{ . }}
+{{- end }}
+{{- with $deployment.namespace.inactiveIn }}
+- --exclude-namespaces={{ . | join "," }}
+{{- end }}
+{{- end }}
+{{- with $deployment.includeResources }}
+- --include-resources={{ . | join "," }}
+{{- end }}
+{{- with $deployment.gracePeriod }}
+- --grace-period={{ . }}
+{{- end }}
+{{- with $deployment.upscalePeriod }}
+- --upscale-period={{ . }}
+{{- end }}
+{{- with $deployment.downscalePeriod }}
+- --downscale-period={{ . }}
+{{- end }}
+{{- with $deployment.defaultUptime }}
+- --default-uptime={{ . }}
+{{- end }}
+{{- with $deployment.defaultDowntime }}
+- --default-downtime={{ . }}
+{{- end }}
+{{- with $deployment.excludeDeployments | join "," }}
+- --exclude-deployments={{ . }}
+{{- end }}
+{{- with $deployment.downtimeReplicas }}
+- --downtime-replicas={{ . }}
+{{- end }}
+{{- with $deployment.deploymentTimeAnnotation }}
+- --deployment-time-annotation={{ . }}
+{{- end }}
+{{- end -}}
