@@ -1,8 +1,8 @@
 # Kubernetes Downscaler
 
-This is a helm chart for [kube-downscaler](https://github.com/hjacobs/kube-downscaler) deployment.
+This is a helm chart for [kube-downscaler](https://codeberg.org/hjacobs/kube-downscaler) deployment.
 
-Please refer to the [official documentation](https://github.com/hjacobs/kube-downscaler#command-line-options) for its usage.
+Please refer to the [official documentation](https://codeberg.org/hjacobs/kube-downscaler#user-content-command-line-options) for its usage.
 
 ## Adding Our Chart Repository
 

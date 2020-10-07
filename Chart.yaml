@@ -5,7 +5,7 @@ home: https://codeberg.org/hjacobs/kube-downscaler
 
 type: application
 
-version: 0.1.1
+version: 0.1.2
 
 appVersion: 20.10.0
 
