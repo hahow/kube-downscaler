@@ -35,19 +35,19 @@ args:
 - --include-resources={{ . | join "," }}
 {{- end }}
 {{- with $deployment.gracePeriod }}
-- --grace-period={{ . }}
+- --grace-period={{ . | quote }}
 {{- end }}
 {{- with $deployment.upscalePeriod }}
-- --upscale-period={{ . }}
+- --upscale-period={{ . | quote }}
 {{- end }}
 {{- with $deployment.downscalePeriod }}
-- --downscale-period={{ . }}
+- --downscale-period={{ . | quote }}
 {{- end }}
 {{- with $deployment.defaultUptime }}
-- --default-uptime={{ . }}
+- --default-uptime={{ . | quote }}
 {{- end }}
 {{- with $deployment.defaultDowntime }}
-- --default-downtime={{ . }}
+- --default-downtime={{ . | quote }}
 {{- end }}
 {{- with $deployment.excludeDeployments | join "," }}
 - --exclude-deployments={{ . }}
@@ -56,6 +56,6 @@ args:
 - --downtime-replicas={{ . }}
 {{- end }}
 {{- with $deployment.deploymentTimeAnnotation }}
-- --deployment-time-annotation={{ . }}
+- --deployment-time-annotation={{ . | quote }}
 {{- end }}
 {{- end -}}
