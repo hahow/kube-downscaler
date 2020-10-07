@@ -1,13 +1,13 @@
 apiVersion: v2
 name: kube-downscaler
 description: A Helm chart for kube-downscaler
-home: https://github.com/hjacobs/kube-downscaler
+home: https://codeberg.org/hjacobs/kube-downscaler
 
 type: application
 
-version: 0.1.0
+version: 0.1.1
 
-appVersion: 20.4.3
+appVersion: 20.10.0
 
 dependencies:
   - name: common
